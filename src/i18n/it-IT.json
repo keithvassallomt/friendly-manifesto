@@ -1,0 +1,21 @@
+{
+  "site.title": "Il Manifesto Friendly",
+  "site.description": "Un insieme volontario di principi per Software Developer, Gatekeeper e User open-source.",
+  "hero.developers": "si impegnano a creare software onesto, sicuro e rispettoso che non sfrutti i propri utenti.",
+  "hero.gatekeepers": "si impegnano a distribuire software in modo equo, trasparente e senza filtri soggettivi o ideologici.",
+  "hero.users": "si impegnano a interagire con gli sviluppatori e le comunità in modo rispettoso, in buona fede e con aspettative realistiche.",
+  "hero.cta": "Leggi il manifesto",
+  "badge.heading": "Mostra il tuo impegno",
+  "badge.description": "Aggiungi questo badge al tuo progetto o sito web per dimostrare che aderisci al Manifesto Friendly.",
+  "badge.variant.colour": "Colore",
+  "badge.variant.black": "Nero",
+  "badge.variant.white": "Bianco",
+  "badge.copy.html": "Copia HTML",
+  "badge.copy.markdown": "Copia Markdown",
+  "badge.copied": "Copiato!",
+  "badge.download": "Scarica SVG",
+  "translation.beta": "Questa traduzione del Manifesto Friendly non è ancora stata verificata da un madrelingua e deve essere considerata una versione \"beta\".",
+  "translation.contribute": "Se sei madrelingua italiano, puoi contribuire alle traduzioni qui.",
+  "footer.license": "Distribuito con licenza",
+  "footer.license.name": "CC BY-SA 4.0"
+}

@@ -12,8 +12,13 @@ You can read the full manifesto on the website at [friendlymanifesto.org](https:
 
 - [English (UK)](src/content/manifesto/en-GB.md)
 - [English (US)](src/content/manifesto/en-US.md)
+- [Français](src/content/manifesto/fr-FR.md) *
+- [Español](src/content/manifesto/es-ES.md) *
+- [Italiano](src/content/manifesto/it-IT.md) *
 
-More translations are on the way. If you'd like to help, see below!
+\* AI-generated, then checked by non-native speaker - needs native speaker review. If you can help, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+More translations are welcome! If you'd like to help, see below.
 
 ## The Website
 

@@ -1,0 +1,21 @@
+{
+  "site.title": "El Manifiesto Amigable",
+  "site.description": "Un conjunto voluntario de principios para Software Developers, Gatekeepers y Users de código abierto.",
+  "hero.developers": "se comprometen a crear software honesto, seguro y respetuoso que no explote a sus usuarios.",
+  "hero.gatekeepers": "se comprometen a distribuir software de manera justa, transparente y sin filtros subjetivos o ideológicos.",
+  "hero.users": "se comprometen a interactuar con los desarrolladores y las comunidades de forma respetuosa, de buena fe y con expectativas realistas.",
+  "hero.cta": "Leer el manifiesto",
+  "badge.heading": "Muestra tu compromiso",
+  "badge.description": "Añade esta insignia a tu proyecto o sitio web para mostrar que te adhieres al Manifiesto Amigable.",
+  "badge.variant.colour": "Color",
+  "badge.variant.black": "Negro",
+  "badge.variant.white": "Blanco",
+  "badge.copy.html": "Copiar HTML",
+  "badge.copy.markdown": "Copiar Markdown",
+  "badge.copied": "¡Copiado!",
+  "badge.download": "Descargar SVG",
+  "translation.beta": "Esta traducción del Manifiesto Amigable aún no ha sido verificada por un hablante nativo y debe considerarse una versión \"beta\".",
+  "translation.contribute": "Si eres hablante nativo de español, puedes contribuir con las traducciones aquí.",
+  "footer.license": "Licenciado bajo",
+  "footer.license.name": "CC BY-SA 4.0"
+}

@@ -31,6 +31,34 @@
   @apply text-emerald-700;
 }
 
+/* --- Alert title translations --- */
+html[lang="fr-FR"] .markdown-alert-title,
+html[lang="es-ES"] .markdown-alert-title,
+html[lang="it-IT"] .markdown-alert-title {
+  font-size: 0;
+}
+
+html[lang="fr-FR"] .markdown-alert-title svg,
+html[lang="es-ES"] .markdown-alert-title svg,
+html[lang="it-IT"] .markdown-alert-title svg {
+  font-size: 1rem;
+}
+
+html[lang="fr-FR"] .markdown-alert-title::after,
+html[lang="es-ES"] .markdown-alert-title::after,
+html[lang="it-IT"] .markdown-alert-title::after {
+  @apply text-sm font-semibold uppercase tracking-wide;
+}
+
+html[lang="fr-FR"] .markdown-alert-note .markdown-alert-title::after { content: "Remarque"; }
+html[lang="fr-FR"] .markdown-alert-tip .markdown-alert-title::after { content: "Conseil"; }
+
+html[lang="es-ES"] .markdown-alert-note .markdown-alert-title::after { content: "Nota"; }
+html[lang="es-ES"] .markdown-alert-tip .markdown-alert-title::after { content: "Consejo"; }
+
+html[lang="it-IT"] .markdown-alert-note .markdown-alert-title::after { content: "Nota"; }
+html[lang="it-IT"] .markdown-alert-tip .markdown-alert-title::after { content: "Suggerimento"; }
+
 /* Smooth scrolling for anchor links — respect motion preferences */
 @media (prefers-reduced-motion: no-preference) {
   html {

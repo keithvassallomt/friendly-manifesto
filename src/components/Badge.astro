@@ -9,10 +9,12 @@ interface Props {
 const { lang, siteUrl = 'https://friendlymanifesto.org' } = Astro.props;
 
 const variants = [
-  { id: 'colour', label: 'Colour', file: 'badge_colour.svg', bg: 'bg-black' },
-  { id: 'black', label: 'Black', file: 'badge_black.svg', bg: 'bg-gray-100' },
-  { id: 'white', label: 'White', file: 'badge_white.svg', bg: 'bg-gray-800' },
+  { id: 'colour', label: t(lang, 'badge.variant.colour'), file: 'badge_colour.svg', bg: 'bg-black' },
+  { id: 'black', label: t(lang, 'badge.variant.black'), file: 'badge_black.svg', bg: 'bg-gray-100' },
+  { id: 'white', label: t(lang, 'badge.variant.white'), file: 'badge_white.svg', bg: 'bg-gray-800' },
 ] as const;
+
+const copiedText = t(lang, 'badge.copied');
 ---
 
 <section class="bg-gray-950 border-t border-yellow-400/20">
@@ -83,7 +85,7 @@ const variants = [
         {t(lang, 'badge.download')}
       </a>
     </div>
-    <div id="copy-status" class="sr-only" aria-live="polite"></div>
+    <div id="copy-status" class="sr-only" aria-live="polite" data-copied-text={copiedText}></div>
   </div>
 </section>
 
@@ -138,10 +140,11 @@ const variants = [
 
       await navigator.clipboard.writeText(text);
       const original = btn.innerHTML;
-      btn.textContent = 'Copied!';
-      btn.classList.add('bg-emerald-600');
       const status = document.getElementById('copy-status');
-      if (status) status.textContent = 'Copied to clipboard';
+      const copiedLabel = status?.dataset.copiedText || 'Copied!';
+      btn.textContent = copiedLabel;
+      btn.classList.add('bg-emerald-600');
+      if (status) status.textContent = copiedLabel;
       setTimeout(() => {
         btn.innerHTML = original;
         btn.classList.remove('bg-emerald-600');
