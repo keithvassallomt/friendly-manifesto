@@ -17,9 +17,12 @@ const { title, description, lang } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/badge.svg" />
+    <link rel="icon" type="image/svg+xml" href="/friendly.svg" />
   </head>
   <body class="bg-yellow-50 text-gray-950 min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-yellow-400 focus:text-gray-950 focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:text-sm">
+      Skip to content
+    </a>
     <slot />
   </body>
 </html>

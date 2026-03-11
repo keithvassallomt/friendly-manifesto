@@ -1,0 +1,152 @@
+---
+// Floating Action Button for reading mode / colour themes
+const themes = [
+  { id: 'default', bg: '#ffffff', fg: '#111827', label: 'Default', fabBg: '#ffffff', fabFg: '#111827', fabBorder: 'rgba(17,24,39,0.2)' },
+  { id: 'dark', bg: '#111827', fg: '#f5f5f4', label: 'Dark', fabBg: '#111827', fabFg: '#f5f5f4', fabBorder: 'rgba(245,245,244,0.2)' },
+  { id: 'sepia', bg: '#f5f0e8', fg: '#3c2a14', label: 'Sepia', fabBg: '#f5f0e8', fabFg: '#3c2a14', fabBorder: 'rgba(60,42,20,0.2)' },
+  { id: 'dyslexia', bg: '#fef9ef', fg: '#1e3a5f', label: 'Dyslexia-friendly', fabBg: '#fef9ef', fabFg: '#1e3a5f', fabBorder: 'rgba(30,58,95,0.2)' },
+] as const;
+---
+
+<div id="reading-fab" class="fixed bottom-3 right-3 z-50 flex flex-col-reverse items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300" role="group" aria-label="Reading mode themes">
+  {/* Theme option buttons — hidden until FAB is open */}
+  {themes.map((theme) => (
+    <button
+      type="button"
+      data-theme={theme.id}
+      role="radio"
+      aria-checked={theme.id === 'default' ? 'true' : 'false'}
+      aria-label={theme.label}
+      title={theme.label}
+      class:list={[
+        'reading-theme-btn rounded-full shadow-lg border-2 flex items-center justify-center text-sm sm:text-lg font-bold',
+        'w-0 h-0 scale-0 opacity-0 transition-all duration-200 cursor-pointer overflow-hidden',
+      ]}
+      data-fab-bg={theme.fabBg}
+      data-fab-fg={theme.fabFg}
+      data-fab-border={theme.fabBorder}
+      style={`background:${theme.bg};color:${theme.fg};border-color:${theme.fg}33;`}
+    >
+      A
+    </button>
+  ))}
+
+  {/* Main FAB toggle */}
+  <button
+    type="button"
+    id="reading-fab-toggle"
+    aria-label="Reading mode"
+    aria-expanded="false"
+    aria-haspopup="true"
+    title="Reading mode"
+    class="w-10 h-10 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center text-base sm:text-xl font-bold cursor-pointer transition-colors border-2"
+    style="background-color:#ffffff;color:#111827;border-color:rgba(17,24,39,0.2);"
+  >
+    <span class="leading-none">Aa</span>
+  </button>
+</div>
+
+<script>
+  const fab = document.getElementById('reading-fab')!;
+  const toggle = document.getElementById('reading-fab-toggle')!;
+  const themeButtons = document.querySelectorAll<HTMLButtonElement>('.reading-theme-btn');
+  const manifesto = document.querySelector<HTMLElement>('article');
+  let isOpen = false;
+
+  // Show FAB after scrolling past the ToC heading
+  const tocHeading = document.getElementById('table-of-contents');
+  if (tocHeading) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          fab.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+          fab.classList.add('opacity-0', 'pointer-events-none');
+          closeMenu();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(tocHeading);
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    toggle.setAttribute('aria-expanded', 'false');
+    themeButtons.forEach((btn) => {
+      btn.classList.add('scale-0', 'opacity-0', 'w-0', 'h-0');
+      btn.classList.remove('scale-100', 'opacity-100', 'w-8', 'h-8', 'sm:w-11', 'sm:h-11');
+    });
+  }
+
+  function openMenu() {
+    isOpen = true;
+    toggle.setAttribute('aria-expanded', 'true');
+    themeButtons.forEach((btn, i) => {
+      setTimeout(() => {
+        btn.classList.remove('scale-0', 'opacity-0', 'w-0', 'h-0');
+        btn.classList.add('scale-100', 'opacity-100', 'w-8', 'h-8', 'sm:w-11', 'sm:h-11');
+      }, i * 50);
+    });
+  }
+
+  toggle.addEventListener('click', () => {
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  // Keyboard: Escape to close, arrow keys to navigate themes
+  fab.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      closeMenu();
+      toggle.focus();
+    }
+    if (!isOpen) return;
+    const btns = [...themeButtons];
+    const idx = btns.indexOf(document.activeElement as HTMLButtonElement);
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      btns[(idx - 1 + btns.length) % btns.length]?.focus();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      btns[(idx + 1) % btns.length]?.focus();
+    }
+  });
+
+  // Apply theme
+  themeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const theme = btn.dataset.theme!;
+
+      // Remove all theme classes, then apply new one
+      if (manifesto) {
+        manifesto.classList.remove('theme-default', 'theme-dark', 'theme-sepia', 'theme-dyslexia');
+        if (theme !== 'default') {
+          manifesto.classList.add(`theme-${theme}`);
+        }
+      }
+
+      // Update active state ring and aria-checked
+      themeButtons.forEach((b) => {
+        b.classList.remove('ring-2', 'ring-yellow-400');
+        b.setAttribute('aria-checked', 'false');
+      });
+      btn.classList.add('ring-2', 'ring-yellow-400');
+      btn.setAttribute('aria-checked', 'true');
+
+      // Update FAB appearance to match theme
+      toggle.style.backgroundColor = btn.dataset.fabBg!;
+      toggle.style.color = btn.dataset.fabFg!;
+      toggle.style.borderColor = btn.dataset.fabBorder!;
+
+      closeMenu();
+    });
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (isOpen && !fab.contains(e.target as Node)) {
+      closeMenu();
+    }
+  });
+</script>

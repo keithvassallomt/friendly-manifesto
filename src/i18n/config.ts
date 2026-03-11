@@ -2,8 +2,8 @@ import enGB from './en-GB.json';
 import enUS from './en-US.json';
 
 export const languages = {
-  'en-GB': { label: 'English (UK)', flag: '🇬🇧' },
-  'en-US': { label: 'English (US)', flag: '🇺🇸' },
+  'en-GB': { label: 'English (UK)', flagCode: 'gb' },
+  'en-US': { label: 'English (US)', flagCode: 'us' },
 } as const;
 
 export type Lang = keyof typeof languages;
