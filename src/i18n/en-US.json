@@ -1,0 +1,11 @@
+{
+  "site.title": "The Friendly Manifesto",
+  "site.description": "A voluntary set of principles for open-source Software Developers, Gatekeepers, and Users.",
+  "badge.heading": "Show your commitment",
+  "badge.description": "Add this badge to your project or website to show that you adhere to the Friendly Manifesto.",
+  "badge.copy.html": "Copy HTML",
+  "badge.copy.markdown": "Copy Markdown",
+  "badge.copied": "Copied!",
+  "footer.license": "Licensed under",
+  "footer.license.name": "CC BY-SA 4.0"
+}

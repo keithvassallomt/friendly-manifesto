@@ -1,0 +1,58 @@
+---
+import { t, type Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+  siteUrl?: string;
+}
+
+const { lang, siteUrl = 'https://friendly-manifesto.org' } = Astro.props;
+
+const badgeHtml = `<a href="${siteUrl}"><img src="${siteUrl}/badge.svg" alt="We are Friendly - The Friendly Manifesto" /></a>`;
+const badgeMarkdown = `[![We are Friendly - The Friendly Manifesto](${siteUrl}/badge.svg)](${siteUrl})`;
+---
+
+<section class="bg-yellow-100 border-t border-b border-yellow-300">
+  <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-2xl font-bold text-gray-950 mb-3">{t(lang, 'badge.heading')}</h2>
+    <p class="text-gray-700 mb-8 max-w-2xl mx-auto">{t(lang, 'badge.description')}</p>
+
+    <div class="mb-8">
+      <img src="/badge.svg" alt="We are Friendly" class="mx-auto" width="184" height="20" />
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <button
+        data-copy={badgeHtml}
+        class="copy-btn inline-flex items-center gap-2 bg-gray-950 hover:bg-gray-800 text-yellow-50 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors cursor-pointer"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        {t(lang, 'badge.copy.html')}
+      </button>
+      <button
+        data-copy={badgeMarkdown}
+        class="copy-btn inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-yellow-50 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors cursor-pointer"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        {t(lang, 'badge.copy.markdown')}
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      if (!text) return;
+      await navigator.clipboard.writeText(text);
+      const original = btn.innerHTML;
+      btn.textContent = 'Copied!';
+      btn.classList.add('bg-emerald-600');
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.classList.remove('bg-emerald-600');
+      }, 2000);
+    });
+  });
+</script>

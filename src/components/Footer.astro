@@ -1,0 +1,26 @@
+---
+import { t, type Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="bg-gray-950 text-yellow-200 mt-auto">
+  <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm">
+    <p>
+      {t(lang, 'footer.license')}{' '}
+      <a
+        href="https://creativecommons.org/licenses/by-sa/4.0/"
+        class="text-yellow-100 underline hover:text-white transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t(lang, 'footer.license.name')}
+      </a>
+    </p>
+    <p class="mt-2 text-yellow-500">The Friendly Manifesto</p>
+  </div>
+</footer>

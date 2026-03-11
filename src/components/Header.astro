@@ -1,0 +1,19 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-gray-950 text-yellow-50 shadow-lg">
+  <div class="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href={`/${lang}/`} class="flex items-center gap-2 font-semibold text-lg hover:text-yellow-300 transition-colors">
+      The Friendly Manifesto
+    </a>
+    <LanguageSwitcher lang={lang} />
+  </div>
+</header>

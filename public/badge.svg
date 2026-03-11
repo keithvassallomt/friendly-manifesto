@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="184" height="20" role="img" aria-label="we are: friendly">
+  <title>We are Friendly - The Friendly Manifesto</title>
+  <linearGradient id="s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="r">
+    <rect width="184" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="58" height="20" fill="#0a0a0a"/>
+    <rect x="58" width="126" height="20" fill="#ca8a04"/>
+    <rect width="184" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+    <text aria-hidden="true" x="29" y="15" fill="#010101" fill-opacity=".3">we are</text>
+    <text x="29" y="14">we are</text>
+    <text aria-hidden="true" x="120" y="15" fill="#010101" fill-opacity=".3">friendly &#9829;</text>
+    <text x="120" y="14">friendly &#9829;</text>
+  </g>
+</svg>
