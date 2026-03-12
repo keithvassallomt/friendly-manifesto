@@ -39,6 +39,23 @@ Each entry is a JSON object with the following fields:
 
 ---
 
+## Declare Conformity
+
+If you're adopting the manifesto, you can go a step further and publicly declare how your project or platform conforms to each principle. We provide two ready-made templates for this:
+
+- **[FRIENDLY_DEVELOPER.md](templates/FRIENDLY_DEVELOPER.md)** — for Software Developers (covers Section 2 of the manifesto)
+- **[FRIENDLY_GATEKEEPER.md](templates/FRIENDLY_GATEKEEPER.md)** — for Gatekeepers (covers Section 3 of the manifesto)
+
+### How to use
+
+1. Copy the relevant template into your own repository.
+2. Fill in each section honestly — checkboxes for yes/no commitments, text fields for details, and links for evidence.
+3. Partial conformity is absolutely fine. The point is transparency, not perfection.
+
+The templates are self-assessed and voluntary. They are not a certification or legal document. By filling one in, you're publicly committing to these principles and inviting others to hold you to them.
+
+---
+
 ## Translate the Manifesto
 
 We'd love help translating the manifesto into more languages. Right now translations are handled via pull requests.
@@ -58,6 +75,8 @@ We'd love help translating the manifesto into more languages. Right now translat
 6. Submit a pull request with the title: `Translate: <Language Name>`.
 
 If you're not sure about something or want to check before starting, feel free to open an issue first.
+
+---
 
 ### A note on existing translations
 
